@@ -1,0 +1,146 @@
+<!-- info section -->
+
+<section class="info_section layout_padding2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 info-col">
+        <div class="info_detail">
+          <h4>
+            Danh Mục
+          </h4>
+          <p>
+            Tôi sẽ giải thích rằng cuộc sống hoặc trốn tránh để tạo ra những phân biệt khác, ví dụ, sự tiện lợi, tính đàn hồi, rơi vào thứ kém xứng đáng hơn và thô bạo hơn, hoặc niềm vui này          </p>
+          <div class="info_social">
+            <a href="">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="#">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="#">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="#">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info-col">
+        <div class="info_contact">
+          <h4>
+            Địa Chỉ
+          </h4>
+          <div class="contact_link_box">
+            <a href="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                  Địa Điểm
+                </span>
+            </a>
+            <a href="#">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                  SĐT: +01 1234567890
+                </span>
+            </a>
+            <a href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                  sangnguyenjp97@gmail.com
+                </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info-col">
+        <div class="info_contact">
+          <h4>
+            Bản Tin
+          </h4>
+          <form action="#">
+            <input type="text" placeholder="Nhập Email" />
+            <button type="submit">
+              Đặt Mua
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 info-col">
+        <div class="map_container">
+          <div class="map">
+            <div id="googleMap">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61350.25635055117!2d108.16447668409154!3d16.04518622707241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c792252a13%3A0xfc14e3a044436487!2zxJDDoCBO4bq1bmcsIEjhuqNpIENow6J1LCDEkMOgIE7hurVuZywgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1664185092492!5m2!1svi!2s" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+  <div class="container">
+    <p>
+      &copy; <span id="displayYear"></span> Tất cả các quyền được bảo lưu bởi
+      <a href="https://html.design/">sang code</a>
+    </p>
+  </div>
+</footer>
+<!-- footer section -->
+
+<!-- Button trigger modal-->
+<button class="modal-button btn btn-none" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg>
+</button>
+
+<!-- Modal: modalCart -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #44b89d; height: 50px">
+        <span class="modal-title text-light" id="myModalLabel" style="font-size: 18px">Giỏ Hàng</span>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-none" aria-label="Close">
+          <span aria-hidden="true" style="color: white">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+
+        <table class="table table-hover">
+          <thead style="font-weight: 300">
+          <tr>
+            <th>STT</th>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Product 1</td>
+            <td>100$</td>
+            <td><a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></a></td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer" style="border: none">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCart -->

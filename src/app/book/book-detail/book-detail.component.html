@@ -1,0 +1,69 @@
+<!-- about section -->
+
+<section class="about_section layout_padding">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="img-box">
+          <img src="assets/images/lam-di-2.png" height="200px" style="padding: 5px;" alt="">
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2 style="color: #44b89d">
+              {{book?.nameBook}}
+            </h2>
+          </div>
+          <ul style="font-size: 14px">
+            <li>Mã Sản Phẩm: <span>{{book?.bookCode}}</span></li>
+            <li>Tác Giả: <span>{{book?.author}}</span></li>
+            <li>Dịch Giả: <span>{{book?.translator}}</span></li>
+            <li>Nhà Xuất Bản: <span>{{book?.publishingCompany}}</span></li>
+            <li>Số Trang: <span>{{book?.numberPages}}</span></li>
+            <li>Kích Thước: <span>{{book?.size}}</span></li>
+            <li>Ngày Phát Hành: <span>{{book?.releaseDate | date : "dd/MM/yyyy"}}</span></li>
+          </ul>
+          <h5 style="color: #44b89d; font-weight: bold">{{book?.price | currency : "VNĐ: "}} đ </h5>
+          <span style="color: #44b89d; font-weight: bold">Số Lượng: <input type="number" style="width: 50px; margin-left: 10px; border: 2px solid gray; border-radius: 5px; padding-left: 10px" [defaultValue]="1" class="border border-secondary"></span>
+          <span style="font-size: 14px; font-weight: 300; color: gray; margin-left: 10px">{{book?.amount}} sản phẩm có sẵn</span>
+          <div class="mt-2">
+            <button class="btn btn-outline-secondary mb-2" style="width: 200px;color: #44b89d;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                   class="bi bi-cart-plus" viewBox="0 0 16 16" style="color: #44b89d;">
+                <path
+                  d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path
+                  d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+              Thêm Vào Giỏ Hàng
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-outline-secondary mb-2" style="width: 200px; color: #44b89d;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-basket2"
+                   viewBox="0 0 16 16" style="color: #44b89d;margin-right: 10px">
+                <path
+                  d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
+                <path
+                  d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+              </svg>
+              Mua Ngay
+            </button>
+          </div>
+          <span style="color: #44b89d; font-weight: bold; font-size: 24px">Giới Thiệu Sách</span>
+          <p>
+            Làm đĩ là cuốn tiểu thuyết – phóng sự nổi tiếng của nhà văn Vũ Trọng Phụng. Cuốn tiểu thuyết không chỉ kể câu chuyện cuộc đời của “đĩ”, mà còn là lời cảnh tỉnh về sự suy đồi của văn hóa, đạo đức trong xã hội đương thời.
+
+            Làm đĩ Vũ Trọng Phụng xuất bản năm 1937 – một năm sau khi tác phẩm hoàn thành. Ngay từ những ấn bản đầu tiên, tác phẩm đã gây ra các cuộc tranh luận không ngừng. Người thì đánh giá Làm đĩ là dâm ô, đồi trụy, ảnh hưởng xấu đến tư tưởng, đạo đức của người đọc. Người khác thì cho rằng đây là cuốn tiểu thuyết nhân văn, nhân bản, giàu giá trị cao đẹp.          </p>
+
+          <a href="">
+            Đọc Thêm
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end about section -->
