@@ -25,10 +25,11 @@
             <li>Ngày Phát Hành: <span>{{book?.releaseDate | date : "dd/MM/yyyy"}}</span></li>
           </ul>
           <h5 style="color: #44b89d; font-weight: bold">{{book?.price | currency : "VNĐ: "}} đ </h5>
-          <span style="color: #44b89d; font-weight: bold">Số Lượng: <input type="number" style="width: 50px; margin-left: 10px; border: 2px solid gray; border-radius: 5px; padding-left: 10px" [defaultValue]="1" class="border border-secondary"></span>
+          <span style="color: #44b89d; font-weight: bold">Số Lượng: <input type="number" style="width: 50px; margin-left: 10px; border: 2px solid gray; border-radius: 5px; padding-left: 10px" [defaultValue]="bookNumber" [(ngModel)]="bookNumber" class="border border-secondary"></span>
           <span style="font-size: 14px; font-weight: 300; color: gray; margin-left: 10px">{{book?.amount}} sản phẩm có sẵn</span>
           <div class="mt-2">
-            <button class="btn btn-outline-secondary mb-2" style="width: 200px;color: #44b89d;">
+            <button class="btn btn-outline-secondary mb-2" style="width: 200px;color: #44b89d;"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="addBook(book.id, bookNumber)">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                    class="bi bi-cart-plus" viewBox="0 0 16 16" style="color: #44b89d;">
                 <path
@@ -57,7 +58,7 @@
 
             Làm đĩ Vũ Trọng Phụng xuất bản năm 1937 – một năm sau khi tác phẩm hoàn thành. Ngay từ những ấn bản đầu tiên, tác phẩm đã gây ra các cuộc tranh luận không ngừng. Người thì đánh giá Làm đĩ là dâm ô, đồi trụy, ảnh hưởng xấu đến tư tưởng, đạo đức của người đọc. Người khác thì cho rằng đây là cuốn tiểu thuyết nhân văn, nhân bản, giàu giá trị cao đẹp.          </p>
 
-          <a href="">
+          <a routerLink="/book/list">
             Đọc Thêm
           </a>
         </div>
@@ -67,3 +68,71 @@
 </section>
 
 <!-- end about section -->
+
+<div class="modal fade modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #44b89d; height: 50px">
+         <span class="modal-title text-light" id="myModalLabel" style="font-size: 18px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart2"
+               viewBox="0 0 16 16" style="margin-right: 10px">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+          </svg>
+          Giỏ Hàng</span>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-none" aria-label="Close">
+          <span aria-hidden="true" style="color: white">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-borderless">
+          <thead style="font-weight: 300">
+          <tr>
+            <th>STT</th>
+            <th>Tiêu Đề</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+            <th>Tổng Cộng</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody style="font-size: 14px">
+          <tr *ngFor="let item of cartList, index as i">
+            <td>{{i + 1}}</td>
+            <td>{{item.book.nameBook}}</td>
+            <td>{{item.book.price}}</td>
+            <td>
+              <div class="d-flex">
+                <div class="me-4" style="position: absolute">{{item.quantity}}</div>
+                <div style="position: relative; left: 30px; top: -18px;">
+                  <button (click)="increaseItem(item)" class="btn btn-light btn-sm text-light" style="margin-bottom: 5px; background-color: #44b89d">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                    </svg>
+                  </button>
+                  <br>
+                  <button [disabled]="item.quantity<2" (click)="reduceItem(item)" class="btn btn-light btn-sm text-light" style="background-color: #44b89d">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </td>
+            <td>{{item.quantity * item.book.price | currency: ' '}} đ</td>
+            <td><span class="btn btn-danger btn-sm" (click)="removeItem(item.book)">Xoá</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-end" style="margin-right: 20%">Tổng Cộng: {{total | currency: 'VNĐ: '}}
+        đ
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp Tục Mua Hàng</button>
+        <button class="btn btn-success" style="background-color: #44b89d">Thanh Toán Đặt Hàng</button>
+      </div>
+    </div>
+  </div>
+</div>

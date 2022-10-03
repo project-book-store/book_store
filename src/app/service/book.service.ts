@@ -14,11 +14,11 @@ export class BookService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(page: number, pageSize: number): Observable<Book[]> {
-    return this.httpClient.get<Book[]>(API_URL + `/book?page=` + page + `&size=` + pageSize);
+  getAll(page: number, pageSize: number, id: number): Observable<Book[]> {
+    return this.httpClient.get<Book[]>(API_URL + `/book/${id}?page=` + page + `&size=` + pageSize);
   }
 
   findById(id: number): Observable<Book> {
-    return this.httpClient.get<Book>(API_URL + `/book/${id}`);
+    return this.httpClient.get<Book>(API_URL + `/book/detail/${id}`);
   }
 }
