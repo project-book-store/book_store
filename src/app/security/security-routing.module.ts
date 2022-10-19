@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {VerityResetPasswordComponent} from './verity-reset-password/verity-reset-password.component';
+import {RegisterComponent} from './register/register.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,9 @@ const routes: Routes = [
   }, {
     path: 'verify-reset-password/:name',
     component: VerityResetPasswordComponent
+  }, {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

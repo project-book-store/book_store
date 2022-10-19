@@ -6,23 +6,25 @@
             <div class="book read con-tooltip right" *ngFor="let item of bookList">
                 <div class="cover">
                     <a [routerLink]="['/book/detail/', item.id]" style="text-decoration: none; color: #0c0c0c">
-                        <img src="assets/images/lam-di-2.png">
-                    </a>
+                        <img src="{{item.images}}">
+                        </a>
                 </div>
-                <div class="description">
-                    <p class="title"><span style="font-size: 16px; font-weight: bold">{{item.nameBook}}</span>
+                <div class="description d-flex justify-content-between">
+                    <p class="title" style="width: 150px"><span style="font-size: 16px; font-weight: bold; display: block; height: 30px">{{item.nameBook}}</span>
                         <br>
                         <span class="author">{{item.author}}</span></p>
+                    <div class="product-item">- {{item.promotion.promotionPrice}}%</div>
                 </div>
                 <div class="tooltip " style="font-size: 14px">
-            <span
+                    <span
                     style="color: #44b89d; font-weight: bold; font-size: 20px; font-family: monospace;">{{item.nameBook}}</span>
                     <ul>
                         <li>Số Trang: {{item.numberPages}}</li>
                         <li>Kích Thước: {{item.size}}</li>
                         <li>Ngày Phát Hành: {{item.releaseDate}}</li>
                     </ul>
-                    <h5 style="color: #44b89d; font-weight: bold">{{item.price | currency : "VNĐ: "}} đ</h5>
+                    <span style="font-size: 13px; font-weight: 300; color: #999999">Giá Gốc: <del>{{item.price | currency : " ":"":"5.0"}} đ</del></span>
+                    <h5 style="color: #44b89d; font-weight: bold">VNĐ: {{item.price * (100 - item.promotion.promotionPrice) / 100 | currency : " ":"":"5.0"}} đ</h5>
                     <div>
                         <button class="btn btn-outline-warning mb-2" style="width: 200px" type="button"
                                 data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="addBook(item.id)">
@@ -35,7 +37,7 @@
                             </svg>
                             Thêm Vào Giỏ Hàng
                         </button>
-                        <button class="btn btn-outline-warning mb-2" style="width: 200px">
+                        <button class="btn btn-outline-warning mb-2" style="width: 200px" (click)="addBooks(item.id)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                  class="bi bi-basket2"
                                  viewBox="0 0 16 16" style="color: #44b89d;margin-right: 10px">
@@ -114,7 +116,7 @@
                     <tr *ngFor="let item of cartList, index as i">
                         <td>{{i + 1}}</td>
                         <td>{{item.book.nameBook}}</td>
-                        <td>{{item.book.price}}</td>
+                        <td>{{item.book.price | currency: " ":"":"5.0"}} đ</td>
                         <td>
                             <div class="d-flex">
                                 <div class="me-4" style="position: absolute">{{item.quantity}}</div>
@@ -133,19 +135,19 @@
                                 </div>
                             </div>
                         </td>
-                        <td>{{item.quantity * item.book.price | currency: ' '}} đ</td>
+                        <td>{{item.quantity * (item.book.price * (100 - item.book.promotion.promotionPrice) / 100) | currency: " ":"":"5.0"}} đ</td>
                         <td><span class="btn btn-danger btn-sm" (click)="removeItem(item.book)">Xoá</span>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-end" style="margin-right: 20%">Tổng Cộng: {{total | currency: 'VNĐ: '}}
+            <div class="d-flex justify-content-end" style="margin-right: 20%">Tổng Cộng: VNĐ: {{total | currency: " ":"":"5.0"}}
                 đ
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp Tục Mua Hàng</button>
-                <button class="btn btn-success" style="background-color: #44b89d">Thanh Toán Đặt Hàng</button>
+                <a class="btn btn-success" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal">Thanh Toán Đặt Hàng</a>
             </div>
         </div>
     </div>

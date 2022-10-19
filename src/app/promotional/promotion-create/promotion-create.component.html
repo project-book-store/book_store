@@ -1,0 +1,85 @@
+<div id="large-th">
+    <div class="container mt-4 d-flex flex-column align-items-center">
+        <h1>Thêm Mới Khuyến Mãi</h1>
+        <br>
+        <div class="col-lg-8">
+            <hr>
+            <div class="mx-4">
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tên Mã Giảm Giá <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text">
+<!--                            <mat-error-->
+<!--                                    *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">-->
+<!--                                Vui Lòng Không Để Trống.-->
+<!--                            </mat-error>-->
+<!--                            <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mã Giảm Giá <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text">
+<!--                            <mat-error-->
+<!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+<!--                                Vui Lòng Không Để Trống.-->
+<!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phần Trăm Giảm <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text">
+<!--                            <mat-error-->
+<!--                                    *ngIf="bookForm.controls.author.hasError('required') && (bookForm.controls.author.touched || bookForm.controls.author.dirty)">-->
+<!--                                Vui Lòng Không Để Trống.-->
+<!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ngày Tạo</mat-label>
+                            <input matInput type="text">
+                            <!--        <mat-error></mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ngày Kết Thúc <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text">
+<!--                            <mat-error-->
+<!--                                    *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">-->
+<!--                                Vui Lòng Không Để Trống.-->
+<!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-around">
+                    <a class="d-grid text-decoration-none" routerLink="">
+                        <button mat-raised-button color="warn"> Quay Lại</button>
+                    </a>
+<!--                    <button *ngIf="loader" type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid"-->
+<!--                            (click)="submit()"> Thêm mới-->
+<!--                    </button>-->
+                    <!--            <button *ngIf="!loader" mat-raised-button color="primary" disabled>-->
+                    <!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
+                    <!--              Đang tải ...-->
+                    <!--            </button>-->
+<!--                    <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40"-->
+<!--                         height="40">-->
+<!--                    <button (click)="reset()" type="reset" mat-raised-button color="accent"> Nhập Lại-->
+<!--                    </button>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

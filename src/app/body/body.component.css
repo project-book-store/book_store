@@ -557,6 +557,7 @@ a:focus {
 
 .blog_section .box .detail-box h5 {
   font-weight: bold;
+  height: 50px;
 }
 
 .blog_section .box .detail-box p {

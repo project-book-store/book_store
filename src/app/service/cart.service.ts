@@ -3,7 +3,6 @@ import {Cart} from '../model/cart';
 import {Book} from '../model/book';
 
 const CART_KEY = 'cartId';
-const QUANTITY_KEY = 'quantity';
 
 @Injectable({
     providedIn: 'root'

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from '../../model/book';
 import {BookService} from '../../service/book.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Cart} from '../../model/cart';
 import {CartService} from '../../service/cart.service';
 
@@ -20,7 +20,8 @@ export class BookDetailComponent implements OnInit {
 
   constructor(private bookService: BookService,
               private activatedRoute: ActivatedRoute,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -74,5 +75,17 @@ export class BookDetailComponent implements OnInit {
     increase.quantity = 1;
     this.cartService.saveBook(increase);
     this.getAllCart();
+  }
+
+  addBooks(id: number, quantityBook: number) {
+    this.bookService.findById(id).subscribe((data: any) => {
+      this.cart = {
+        book: data,
+        quantity: quantityBook
+      };
+      this.cartService.saveBook(this.cart);
+      this.getAllCart();
+      this.router.navigateByUrl('checkout');
+    });
   }
 }

@@ -21,4 +21,12 @@ export class BookService {
   findById(id: number): Observable<Book> {
     return this.httpClient.get<Book>(API_URL + `/book/detail/${id}`);
   }
+
+  getBestSellingBook(page: number, pageSize: number): Observable<Book[]> {
+    return this.httpClient.get<Book[]>(API_URL + `/bestSellingBook?page=` + page + `&size=` + pageSize);
+  }
+
+  getHistoryBook(page: number, pageSize: number, customerId: number): Observable<Book[]> {
+    return this.httpClient.get<Book[]>(API_URL + `/historyBook/${customerId}?page=` + page + `&size=` + pageSize);
+  }
 }

@@ -140,7 +140,7 @@ a:focus {
 }
 
 .navbar-brand {
-  padding: 0;
+  padding: 6px;
   margin: 0;
   color: #000000;
   font-size: 24px;
@@ -160,7 +160,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
-  padding: 10px 25px;
+  padding: 5px 25px;
   color: #ffffff;
   text-align: center;
 }

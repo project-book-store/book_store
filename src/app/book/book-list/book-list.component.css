@@ -27,15 +27,6 @@ Book stuff
   transition: height 1s;
 }
 /* star button */
-.book:after {
-  font-family: FontAwesome;
-  content: "\f006";
-  font-size: 24px;
-  position: relative;
-  left: -.1cm;
-  top: -1.6cm;
-  float: right;
-}
 
 .cover {
   border: 2px solid gray;
@@ -189,4 +180,19 @@ zoom on click
 
 @media screen and (max-width: 996px) {
   .right .tooltip { top:25%; left: 25%; }
+}
+
+.product-item {
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: #00ab9f;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 300;
+  font-family: math;
+  margin-top: 10px;
 }

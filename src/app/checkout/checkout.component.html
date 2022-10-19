@@ -1,0 +1,272 @@
+<h1 style="margin-top: 10px; color: gray;font-size: 40px;" xmlns="http://www.w3.org/1999/html">Thủ Tục Thanh Toán</h1>
+<div class="tab_container">
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1"><span class="numberCircle">1</span><span>Giỏ Hàng</span></label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2"><span class="numberCircle">2</span><span>TT Khách Hàng</span></label>
+
+    <input id="tab3" type="radio" name="tabs" >
+    <label for="tab3"><span class="numberCircle">3</span><span>Thanh Toán</span></label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4"><span class="numberCircle">4</span><span>Chuyển Hàng</span></label>
+
+
+    <section id="content1" class="tab-content">
+        <h3>Thông Tin Giỏ Hàng</h3>
+        <div style="padding: 10px 20px;">
+        <table class="table table-borderless" >
+            <thead style="font-weight: 300; margin-bottom: 10px">
+            <tr>
+                <th>STT</th>
+                <th>Tiêu Đề</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Tổng Cộng</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody style="font-size: 14px">
+            <tr *ngFor="let item of cartList, index as i">
+                <td>{{i + 1}}</td>
+                <td>{{item.book.nameBook}}</td>
+                <td>{{item.book.price}}</td>
+                <td>
+                    <div class="d-flex">
+                        <div class="me-4" style="position: absolute">{{item.quantity}}</div>
+                        <div style="position: relative; left: 30px; top: -18px;">
+                            <button (click)="increaseItem(item)" class="btn btn-light btn-sm text-light" style="margin-bottom: 5px; background-color: #44b89d">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                                </svg>
+                            </button>
+                            <br>
+                            <button [disabled]="item.quantity<2" (click)="reduceItem(item)" class="btn btn-light btn-sm text-light" style="background-color: #44b89d">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>{{item.quantity * item.book.price | currency: ' '}} đ</td>
+                <td><span class="btn btn-danger btn-sm" (click)="removeItem(item.book)">Xoá</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="d-flex justify-content-end" style="margin-right: 20%">Tổng Cộng: {{total | currency: 'VNĐ: '}}
+            đ
+        </div>
+        <div class="button-master-container mt-2">
+            <div class="button-container button-finish">
+                <button class="btn btn-none border-0">
+                    <label for="tab2" style="background: none; padding: 0; border: none; color: #7DC855; font-size: 16px; font-weight: 500;">
+                        Tiếp Tục
+                    </label>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="content2" class="tab-content">
+        <h3>Thông Tin Khách Hàng</h3>
+        <form [formGroup]="customerForm" (ngSubmit)="addCustomer()" method="post">
+            <div class="cc-title" style="margin-left: 15px;font-weight: bold;font-size: 16px">Thông tin người mua</div>
+            <input type="text" class="input cc-txt" formControlName="id" hidden/>
+            <div class="form-cc">
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Họ Và Tên
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="customerName"/>
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Số Điện Thoại
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="phoneNumber"/>
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Ghi Chú
+                        </div>
+                        <textarea class="cc-txt" formControlName="note"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="cc-title" style="margin-left: 15px;font-weight: bold;font-size: 16px">Địa Chỉ Nhận Hàng</div>
+            <div class="form-cc">
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Thành Phố
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="city"/>
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Quận Huyện
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="district"/>
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Địa Chỉ
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="address"/>
+                    </div>
+                </div>
+            </div>
+            <div class="button-master-container">
+                <div class="button-container">
+                    <button class="btn border-0" type="button">
+                        <label for="tab1" style="background: none; padding: 0; border: none; color: #999; font-size: 16px; width: 100%">
+                            Quay Lại
+                        </label>
+                    </button>
+                </div>
+                <div class="button-container button-finish">
+                    <button class="btn btn-none border-0" type="submit">
+                        <label for="tab3" style="background: none; padding: 0; border: none; color: #7DC855; font-size: 16px; font-weight: 500;">
+                            Tiếp Tục
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </section>
+
+    <section id="content3" class="tab-content">
+        <form [formGroup]="cardForm" (ngSubmit)="addCard()" method="post">
+            <div class="pymt-radio">
+
+                <div class="row-payment-method payment-row-last">
+                    <div class="select-icon hr">
+                        <input type="radio" id="radio2" name="radios" value="pp" checked>
+                        <label for="radio2"></label>
+                    </div>
+                    <div class="select-txt hr">
+                        <p class="pymt-type-name">Thẻ Tín Dụng</p>
+                        <p class="pymt-type-desc">
+                            Chuyển tiền an toàn bằng tài khoản ngân hàng của bạn. Thanh toán trực tuyến an toàn. Cần có thẻ tín dụng. Visa, Maestro, Discover, American Express                        </p>
+                    </div>
+                    <div class="select-logo">
+                        <div class="select-logo-sub logo-spacer">
+                            <img src="https://www.dropbox.com/s/pycofx0gngss4ef/logo-paypal.png?raw=1" alt="PayPal"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-cc">
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Số Thẻ Tín Dụng
+                        </div>
+                        <input type="text" class="input cc-txt text-validated" formControlName="creditNumber" value="4542 9931 9292 2293" />
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">Ngày Hết Hạn
+                        </div>
+                        <select class="input cc-ddl" formControlName="expirationDate">
+                            <option selected>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                        <select class="input cc-ddl" formControlName="expirationMonth">
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option selected>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                        </select>
+                    </div>
+                    <div class="cc-field">
+                        <div class="cc-title">mã CVV<span class="numberCircle">?</span>
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="codeCvv"/>
+                    </div>
+                </div>
+                <div class="row-cc">
+                    <div class="cc-field">
+                        <div class="cc-title">
+                            Tên Trên Thẻ
+                        </div>
+                        <input type="text" class="input cc-txt" formControlName="cardName"/>
+                    </div>
+                </div>
+                <input type="text" class="input cc-txt" formControlName="customer" hidden/>
+            </div>
+            <div class="button-master-container">
+                <div class="button-container">
+                    <button class="btn border-0" type="button">
+                        <label for="tab2" style="background: none; padding: 0; border: none; color: #999; font-size: 16px; width: 100%">
+                            Quay Lại
+                        </label>
+                    </button>
+                </div>
+                <div class="button-container button-finish">
+                    <button class="btn btn-none border-0" type="submit">
+                        <label for="tab4" style="background: none; padding: 0; border: none; color: #7DC855; font-size: 16px; font-weight: 500;">
+                            Tiếp Tục
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </section>
+
+    <section id="content4" class="tab-content">
+        <h3>Đang Chuyển Hàng</h3>
+        <div class="button-master-container">
+            <div class="button-container">
+                <a routerLink="/book/list/1">Trở Lại</a>
+            </div>
+        </div>
+    </section>
+</div>

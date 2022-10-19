@@ -41,7 +41,7 @@
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-secondary mb-2" style="width: 200px; color: #44b89d;">
+            <button class="btn btn-outline-secondary mb-2" style="width: 200px; color: #44b89d;" (click)="addBooks(book.id, bookNumber)">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-basket2"
                    viewBox="0 0 16 16" style="color: #44b89d;margin-right: 10px">
                 <path
@@ -131,7 +131,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-between">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp Tục Mua Hàng</button>
-        <button class="btn btn-success" style="background-color: #44b89d">Thanh Toán Đặt Hàng</button>
+        <a class="btn btn-success" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal">Thanh Toán Đặt Hàng</a>
       </div>
     </div>
   </div>

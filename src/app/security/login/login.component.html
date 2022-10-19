@@ -1,6 +1,6 @@
 <div class="limiter" style="background-color: #666666;">
   <div class="container-login100">
-    <div class="wrap-login100">
+    <form class="wrap-login100" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <div class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">
 						Đăng Nhập
@@ -8,28 +8,28 @@
 
 
         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-          <input class="input100 has-val" type="text" name="email">
+          <input class="input100 has-val" type="text" name="username" formControlName="username">
           <span class="focus-input100"></span>
-          <span class="label-input100">Email</span>
+          <span class="label-input100">Tên Tài Khoản</span>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100 has-val" type="password" name="pass">
+          <input class="input100 has-val" type="password" name="password" formControlName="password">
           <span class="focus-input100"></span>
           <span class="label-input100">Mật Khẩu</span>
         </div>
 
         <div class="flex-sb-m w-full p-t-3 p-b-32">
           <div class="contact100-form-checkbox">
-            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" formControlName="remember_me">
             <label class="label-checkbox100" for="ckb1">
               Ghi nhớ lần đăng nhập lần sau.
             </label>
           </div>
 
           <div>
-            <a href="#" class="txt1">
+            <a routerLink="/reset-password" class="txt1">
               Quên Mật Khẩu?
             </a>
           </div>
@@ -37,11 +37,14 @@
 
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
+          <button class="login100-form-btn mb-2" type="submit">
             Đăng nhập
           </button>
-        </div>
 
+        </div>
+        <a role="button" class="login100-form-btn bg-secondary" routerLink="/register">
+          Đăng kí
+        </a>
         <div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
 							hoặc đăng ký bằng cách sử dụng
@@ -61,6 +64,6 @@
 
       <div class="login100-more" style="background-image: url('assets/images/book-login.jpeg');">
       </div>
-    </div>
+    </form>
   </div>
 </div>

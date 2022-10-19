@@ -1,0 +1,154 @@
+<div id="large-th">
+    <div class="container mt-4">
+        <h1>Sách Bán Chạy</h1>
+        <br>
+        <div id="list-th">
+            <div class="book read con-tooltip right" *ngFor="let item of bookList">
+                <div class="cover">
+                    <a [routerLink]="['/book/detail/', item.id]" style="text-decoration: none; color: #0c0c0c">
+                        <img src="{{item.images}}">
+                    </a>
+                </div>
+                <div class="description d-flex justify-content-between">
+                    <p class="title" style="width: 150px"><span style="font-size: 16px; font-weight: bold; display: block; height: 30px">{{item.nameBook}}</span>
+                        <br>
+                        <span class="author">{{item.author}}</span></p>
+                    <div class="product-item">- {{item.promotion.promotionPrice}}%</div>
+                </div>
+                <div class="tooltip " style="font-size: 14px">
+            <span
+                    style="color: #44b89d; font-weight: bold; font-size: 20px; font-family: monospace;">{{item.nameBook}}</span>
+                    <ul>
+                        <li>Số Trang: {{item.numberPages}}</li>
+                        <li>Kích Thước: {{item.size}}</li>
+                        <li>Ngày Phát Hành: {{item.releaseDate}}</li>
+                    </ul>
+                    <h5 style="color: #44b89d; font-weight: bold">{{item.price | currency : "VNĐ: "}} đ</h5>
+                    <div>
+                        <button class="btn btn-outline-warning mb-2" style="width: 200px" type="button"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="addBook(item.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                 class="bi bi-cart-plus" viewBox="0 0 16 16" style="color: #44b89d;">
+                                <path
+                                        d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                <path
+                                        d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            Thêm Vào Giỏ Hàng
+                        </button>
+                        <button class="btn btn-outline-warning mb-2" style="width: 200px" (click)="addBooks(item.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                 class="bi bi-basket2"
+                                 viewBox="0 0 16 16" style="color: #44b89d;margin-right: 10px">
+                                <path
+                                        d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
+                                <path
+                                        d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+                            </svg>
+                            Mua Ngay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px;position: relative" class="container pagination-advertisement mb-3">
+    <ul class="pagination justify-content-end align-items-center">
+        <li>
+            <select class="form-select" (change)="totalElement($event)">
+                <option value="9" [selected]="pageSize === 9">9</option>
+                <option value="18" [selected]="pageSize === 18">18</option>
+                <option value="full" [selected]="pageSize === totalElements">Tất cả</option>
+            </select>
+        </li>
+        <li class="page-item ms-2">
+            <button (click)="goPrevious()" [hidden]="!checkPreview" type="button"
+                    class="btn btn-none">
+                Trang trước
+            </button>
+        </li>
+        <li class="page-item ms-2">
+      <span style="margin: 0 20px 0 20px">{{numberOfElementFinal}} - {{(numberOfElementFirst)}}
+          trên {{totalElements}}</span>
+        </li>
+        <li class="page-item">
+
+            <button (click)="goNext()" [hidden]="!checkNext"
+                    type="button"
+                    class="btn btn-none">
+                Trang sau
+            </button>
+        </li>
+    </ul>
+</div>
+
+<!-- Modal: modalCart -->
+<div class="modal fade modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #44b89d; height: 50px">
+         <span class="modal-title text-light" id="myModalLabel" style="font-size: 18px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart2"
+               viewBox="0 0 16 16" style="margin-right: 10px">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+          </svg>
+          Giỏ Hàng</span>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-none" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-borderless">
+                    <thead style="font-weight: 300">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tiêu Đề</th>
+                        <th>Giá</th>
+                        <th>Số Lượng</th>
+                        <th>Tổng Cộng</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody style="font-size: 14px">
+                    <tr *ngFor="let item of cartList, index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{item.book.nameBook}}</td>
+                        <td>{{item.book.price}}</td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="me-4" style="position: absolute">{{item.quantity}}</div>
+                                <div style="position: relative; left: 30px; top: -18px;">
+                                    <button (click)="increaseItem(item)" class="btn btn-light btn-sm text-light" style="margin-bottom: 5px; background-color: #44b89d">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                                        </svg>
+                                    </button>
+                                    <br>
+                                    <button [disabled]="item.quantity<2" (click)="reduceItem(item)" class="btn btn-light btn-sm text-light" style="background-color: #44b89d">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{item.quantity * item.book.price | currency: ' '}} đ</td>
+                        <td><span class="btn btn-danger btn-sm" (click)="removeItem(item.book)">Xoá</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end" style="margin-right: 20%">Tổng Cộng: {{total | currency: 'VNĐ: '}}
+                đ
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp Tục Mua Hàng</button>
+                <a class="btn btn-success" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal">Thanh Toán Đặt Hàng</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal: modalCart -->

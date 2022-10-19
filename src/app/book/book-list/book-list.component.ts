@@ -3,7 +3,7 @@ import {BookService} from '../../service/book.service';
 import {Book} from '../../model/book';
 import {CartService} from '../../service/cart.service';
 import {Cart} from '../../model/cart';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-book-list',
@@ -26,7 +26,8 @@ export class BookListComponent implements OnInit {
 
     constructor(private bookService: BookService,
                 private cartService: CartService,
-                private activatedRoute: ActivatedRoute) {
+                private activatedRoute: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -91,7 +92,7 @@ export class BookListComponent implements OnInit {
             this.cartList = this.cartService.getCart();
             this.total = 0;
             for (const item of this.cartList) {
-                this.total = this.total + (item.book.price * item.quantity);
+                this.total = this.total + ((item.book.price * (100 - item.book.promotion.promotionPrice) / 100) * item.quantity);
             }
         } else {
             this.cartList = null;
@@ -113,5 +114,17 @@ export class BookListComponent implements OnInit {
         increase.quantity = 1;
         this.cartService.saveBook(increase);
         this.getAllCart();
+    }
+
+    addBooks(id: number) {
+        this.bookService.findById(id).subscribe((data: any) => {
+            this.cart = {
+                book: data,
+                quantity: 1
+            };
+            this.cartService.saveBook(this.cart);
+            this.getAllCart();
+            this.router.navigateByUrl('checkout');
+        });
     }
 }
