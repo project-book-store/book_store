@@ -31,6 +31,8 @@ export class CheckoutComponent implements OnInit {
         city: new FormControl(''),
         district: new FormControl(''),
         address: new FormControl(''),
+        images: new FormControl(''),
+        dateOfBirth: new FormControl(''),
     });
     cardForm: FormGroup = new FormGroup({
         cardName: new FormControl(''),
@@ -55,6 +57,7 @@ export class CheckoutComponent implements OnInit {
         this.appUserService.getAppUser(this.username).subscribe(value => {
             this.customerService.getCustomer(value?.id).subscribe(item => {
                 this.customerForm.patchValue({id: item?.id});
+                this.customerForm.patchValue(item);
                 this.cardForm.patchValue({customer: item});
             });
         });

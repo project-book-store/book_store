@@ -1,0 +1,78 @@
+<div id="large-th">
+    <div class="container mt-4 d-flex flex-column align-items-center">
+        <h1>Cập Nhập Khuyến Mãi</h1>
+        <br>
+        <form class="col-lg-8" [formGroup]="promotionForm" (ngSubmit)="editPromotion()">
+            <div class="mx-4">
+                <hr>
+                <input matInput type="text" formControlName="id">
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tên Mã Giảm Giá <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="promotionName">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                            <!--                            <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mã Giảm Giá <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="promotionCode">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phần Trăm Giảm <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="promotionPrice">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.author.hasError('required') && (bookForm.controls.author.touched || bookForm.controls.author.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ngày Tạo <span><i>(*)</i></span></mat-label>
+                            <input matInput type="date" formControlName="startDate">
+                            <!--        <mat-error></mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ngày Kết Thúc <span><i>(*)</i></span></mat-label>
+                            <input matInput type="date" formControlName="endDate">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <input matInput type="date" formControlName="isDelete" hidden>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-around p-3">
+                    <a class="d-grid text-decoration-none" routerLink="/promotional">
+                        <button mat-raised-button style="background: #44b89d; color: white"> Quay Lại</button>
+                    </a>
+                    <button type="submit" mat-raised-button style="background: #44b89d; color: white">
+                        Cập Nhập
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -6,8 +6,13 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BestSellingBookComponent } from './best-selling-book/best-selling-book.component';
+import { BookManagerComponent } from './book-manager/book-manager.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -17,11 +22,17 @@ import { BestSellingBookComponent } from './best-selling-book/best-selling-book.
     BookEditComponent,
     BookDetailComponent,
     BestSellingBookComponent,
+    BookManagerComponent,
   ],
     imports: [
         CommonModule,
         BookRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSelectModule
     ]
 })
 export class BookModule { }

@@ -1,1 +1,169 @@
-<p>book-edit works!</p>
+<div id="large-th">
+    <div class="container mt-4 d-flex flex-column align-items-center">
+        <h1>Cập Nhập Sách</h1>
+        <br>
+        <form class="col-lg-8" [formGroup]="bookForm" (ngSubmit)="editBook()">
+            <div class="mx-4">
+                <hr>
+                <input matInput type="text" formControlName="id" hidden>
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mã Sách <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="bookCode">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                            <!--                            <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="nameBook">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tác Giả <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="author">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.author.hasError('required') && (bookForm.controls.author.touched || bookForm.controls.author.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="translator">
+                            <!--        <mat-error></mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nhà Xuất Bản <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="publishingCompany">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Số Trang <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="numberPages">
+                            <!--        <mat-error></mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Kích Thước <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="size">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                            <!--                            <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ngày Phát Hành <span><i>(*)</i></span></mat-label>
+                            <input matInput type="date" formControlName="releaseDate">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Giá Tiền <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="price">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                            <!--                            <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="amount">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
+                            <mat-select formControlName="category">
+                                <mat-option *ngFor="let item of categoryList" [value]="item.id">{{item.categoryName}}</mat-option>
+                            </mat-select>
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Khuyến Mãi <span><i>(*)</i></span></mat-label>
+                            <mat-select formControlName="promotion">
+                                <mat-option *ngFor="let item of promotionList" [value]="item.id">{{item.promotionName}}</mat-option>
+                            </mat-select>
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-12 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ảnh <span><i>(*)</i></span></mat-label>
+                            <input matInput type="text" formControlName="images">
+                            <!--                            <mat-error-->
+                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
+                            <!--                                Vui Lòng Không Để Trống.-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <input matInput type="date" formControlName="isDelete" hidden>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-around p-3">
+                    <a class="d-grid text-decoration-none" routerLink="/book/manager">
+                        <button mat-raised-button style="background: #44b89d; color: white"> Quay Lại</button>
+                    </a>
+                    <button type="submit" mat-raised-button style="background: #44b89d; color: white">
+                        Cập Nhập
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

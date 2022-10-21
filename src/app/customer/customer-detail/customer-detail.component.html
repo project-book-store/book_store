@@ -1,0 +1,38 @@
+<!-- about section -->
+
+<section class="about_section layout_padding">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="img-box">
+                    <img src="{{customer?.images}}" height="200px" style="padding: 5px;" alt="">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2 style="color: #44b89d">
+                            Thông Tin Khách Hàng
+                        </h2>
+                    </div>
+                    <ul style="font-size: 14px; list-style: none" class="information">
+                        <li>Họ Và Tên: <span>{{customer?.customerName}}</span></li>
+                        <li>Ngày Sinh: <span>{{customer?.dateOfBirth | date : "dd/MM/yyyy"}}</span></li>
+                        <li>Địa Chỉ: <span>{{customer?.address}}</span></li>
+                        <li>Số Điện Thoại: <span>{{customer?.phoneNumber}}</span></li>
+                        <li>Email: <span>{{customer?.email}}</span></li>
+                        <li>Thành Phố: <span>{{customer?.city}}</span></li>
+                        <li>Quận: <span>{{customer?.district}}</span></li>
+                    </ul>
+                    <span style="color: #44b89d; font-weight: bold; font-size: 24px">Giới Thiệu</span>
+                    <p>{{customer?.note}}</p>
+                    <a routerLink="/customer/edit">
+                        Sửa Thông Tin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end about section -->

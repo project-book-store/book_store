@@ -5,4 +5,5 @@ export interface Promotion {
   promotionPrice?: number;
   startDate?: Date;
   endDate?: Date;
+  isDelete?: boolean;
 }

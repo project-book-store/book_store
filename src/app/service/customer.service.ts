@@ -21,4 +21,8 @@ export class CustomerService {
     getCustomer(userId: number): Observable<Customer> {
         return this.httpClient.get<Customer>(API_URL + '/customer/' + userId);
     }
+
+    edit(customer: Customer): Observable<Customer> {
+        return this.httpClient.put<Customer>(API_URL + `/customer/update`, customer);
+    }
 }

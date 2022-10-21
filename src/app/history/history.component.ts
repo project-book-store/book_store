@@ -46,8 +46,8 @@ export class HistoryComponent implements OnInit {
     this.bookService.getHistoryBook(page, this.pageSize, this.customerId).subscribe((data?: any) => {
       this.bookList = data?.content;
       this.number = data?.number;
-      this.checkNext = !data.last;
-      this.checkPreview = !data.first;
+      this.checkNext = !data?.last;
+      this.checkPreview = !data?.first;
       this.totalElements = data?.totalElements;
       this.numberOfElementFinal = 1 + data?.size * data?.number;
       this.numberOfElementFirst = data?.numberOfElements + data?.size * data?.number;

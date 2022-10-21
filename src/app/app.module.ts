@@ -28,6 +28,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {StatisticModule} from './statistic/statistic.module';
+import {CustomerModule} from './customer/customer.module';
 
 @NgModule({
     declarations: [
@@ -63,6 +65,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
         MatMenuModule,
         MatPaginatorModule,
         MatCheckboxModule,
+        StatisticModule,
+        CustomerModule
     ],
     providers: [],
     exports: [

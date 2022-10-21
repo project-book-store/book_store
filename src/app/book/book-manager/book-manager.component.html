@@ -1,0 +1,128 @@
+<div id="large-th">
+    <div class="container mt-4">
+        <h1>Quản Lí Sách</h1>
+        <br>
+        <form [formGroup]="searchForm" novalidate>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-3">
+                            <a class="btn btn-light me-2" style="background: #44b89d; color: white" routerLink="/book/create"><i class="bi bi-gift-fill"></i></a>
+                            <button class=" btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    [disabled]="checkDelete" [hidden]="!checkDelete">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                            <button class=" btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    [hidden]="checkDelete">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </div>
+                        <div class="col-3 mx-auto me-0" style="display: flex; width: 350px; position: relative">
+                            <input formControlName="content" class="form-control bg-transparent me-1" type="search" placeholder="Tìm Kiếm..."
+                                   aria-label="Search" style="border-radius: 45px; height: 40px; width: 250px;"
+                                   (keyup.enter)="search()">
+                            <button class="btn btn-light me-0 text-break search_form" type="submit"
+                                    (click)="search()" style="background: #44b89d; color: white; position: absolute; right: 91px; font: normal normal normal 14px/1 FontAwesome;"><i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div style="overflow-x:auto;">
+            <table class="table table-borderless" >
+                <thead style="font-weight: 300; margin-bottom: 10px">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Sách</th>
+                    <th>Tên Sách</th>
+                    <th>Ảnh</th>
+                    <th>Tác Giả</th>
+                    <th>Dịch Giả</th>
+                    <th>Nhà Xuất Bản</th>
+                    <th>Số Trang</th>
+                    <th>Kích Thước</th>
+                    <th>Ngày Phát Hành</th>
+                    <th>Giá Tiền</th>
+                    <th>Số Lượng</th>
+                    <th><input class="form-check-input" type="checkbox" [checked]="checkedAll"
+                               (change)="checkAll($event)"></th>
+                </tr>
+                </thead>
+                <tbody style="font-size: 14px">
+                <tr *ngFor="let item of bookList, index as i">
+                    <td>{{(i + 1) + pageSize * number}}</td>
+                    <td>{{item.bookCode}}</td>
+                    <td>{{item.nameBook}}</td>
+                    <td><img src="{{item.images}}" alt="" style="width: 50px"></td>
+                    <td>{{item.author}}</td>
+                    <td>{{item.translator}}</td>
+                    <td>{{item.publishingCompany}}</td>
+                    <td>{{item.numberPages}}</td>
+                    <td>{{item.size}}</td>
+                    <td>{{item.releaseDate | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.author}}</td>
+                    <td><input class="form-check-input" type="checkbox" [checked]="checkbox(item)"
+                               (change)="getListDelete(item)"></td>
+                    <td>
+                        <button class="btn btn-none" style="padding: 0" [routerLink]="['/book/edit', item.id]"><i class="bi bi-wrench-adjustable"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="height: 50px;position: relative" class="container pagination-advertisement mb-3">
+        <ul class="pagination justify-content-end align-items-center">
+            <li>
+                <select class="form-select" (change)="totalElement($event)">
+                    <option value="9" [selected]="pageSize === 9">9</option>
+                    <option value="18" [selected]="pageSize === 18">18</option>
+                    <option value="full" [selected]="pageSize === totalElements">Tất cả</option>
+                </select>
+            </li>
+            <li class="page-item ms-2">
+                <button (click)="goPrevious()" [hidden]="!checkPreview" type="button"
+                        class="btn btn-none">
+                    Trang trước
+                </button>
+            </li>
+            <li class="page-item ms-2">
+      <span style="margin: 0 20px 0 20px">{{numberOfElementFinal}} - {{(numberOfElementFirst)}}
+          trên {{totalElements}}</span>
+            </li>
+            <li class="page-item">
+
+                <button (click)="goNext()" [hidden]="!checkNext"
+                        type="button"
+                        class="btn btn-none">
+                    Trang sau
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Cảnh Báo!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Xác nhận xoá dữ liệu<p *ngFor="let data of deleteList, index as i">{{i+1}}: Mã Sách <span
+                        class="text-danger">{{data.bookCode}}</span>, Tên Sách <span class="text-danger">{{data.nameBook}}</span> và
+                    Ngày Đăng <span class="text-danger">{{data.releaseDate}}</span>
+                </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Huỷ</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" id="liveToastBtn"
+                            (click)="delete()">Xoá
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

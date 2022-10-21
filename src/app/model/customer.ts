@@ -8,6 +8,8 @@ export interface Customer {
     note?: string;
     city?: string;
     district?: string;
+    images?: string;
+    dateOfBirth?: Date;
     address?: string;
     appUser?: AppUser;
 }

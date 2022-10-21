@@ -5,6 +5,7 @@ import {BookEditComponent} from './book-edit/book-edit.component';
 import {BookCreateComponent} from './book-create/book-create.component';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BestSellingBookComponent} from './best-selling-book/best-selling-book.component';
+import {BookManagerComponent} from './book-manager/book-manager.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
     path: 'book/create',
     component: BookCreateComponent
   }, {
-    path: 'book/edit',
+    path: 'book/edit/:id',
     component: BookEditComponent
   }, {
     path: 'book/detail/:id',
@@ -23,6 +24,9 @@ const routes: Routes = [
   }, {
     path: 'best-selling-book',
     component: BestSellingBookComponent
+  }, {
+    path: 'book/manager',
+    component: BookManagerComponent
   }
 ];
 

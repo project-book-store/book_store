@@ -1,0 +1,234 @@
+.container {
+    margin: 0 auto;
+    max-width: 910px;
+}
+
+.choose {
+    width: 100%;
+    height: 40px;
+}
+.fa {
+    margin-right: 20px;
+    font-size: 30px;
+    color: gray;
+    float: right;
+}
+/******************************************
+Book stuff
+*******************************************/
+
+.book {
+    display: inline-block;
+    width: 230px;
+    box-shadow: 0 0 20px #aaa;
+    margin: 25px;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
+    transition: height 1s;
+}
+/* star button */
+.book:after {
+    font-family: FontAwesome;
+    content: "\f006";
+    font-size: 24px;
+    position: relative;
+    left: -.1cm;
+    top: -1.6cm;
+    float: right;
+}
+
+.cover {
+    border: 2px solid gray;
+    height: 80%;
+    overflow: hidden;
+}
+
+.cover img {
+    width: 100%;
+}
+
+.book p {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.book .author {
+    font-size: 15px;
+}
+@media (max-width: 941px) {
+    .container {
+        max-width: 700px;
+    }
+    .book {
+        margin: 49px;
+    }
+}
+@media (max-width: 730px) {
+    .book {
+        display: block;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+}
+
+/*********************************
+other
+**********************************/
+
+h1 {
+    color: gray;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: -3px;
+}
+
+/**********************************
+display change
+***********************************/
+/*book height smaller, cover opacity, move text onto cover and star too
+animate it */
+#list-th:target .book {
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    margin: 25px auto 25px auto;
+}
+
+#list-th:target .cover {
+    width: 246px;
+}
+
+#list-th:target img {
+    opacity: .1;
+}
+
+#list-th:target p {
+    margin-top: -62px;
+    margin-left: 20px;
+}
+/* remove button? */
+#large-th:target .book {
+    height: 390px;
+}
+
+/***********************************
+star animation
+***********************************/
+/***********************************
+zoom on click
+***********************************/
+
+#list-th {
+    position: relative;
+}
+
+/*tooltip Box*/
+.con-tooltip {
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+}
+
+/*tooltip */
+.tooltip {
+    visibility: hidden;
+    z-index: 1;
+    opacity: .40;
+    padding: 0 20px;
+    background: #063547;
+    color: white;
+    position: absolute;
+    border-radius: 9px;
+    font-size: 16px;
+    transform: translateY(9px);
+    box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+
+/* tooltip  after*/
+.tooltip::after {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 12.5px 0 12.5px;
+    border-color: #063547 transparent transparent transparent;
+    position: absolute;
+}
+
+.con-tooltip:hover .tooltip{
+    visibility: visible;
+    transform: translateY(-10px);
+    opacity: 1;
+    transition: .3s linear;
+    animation: odsoky 1s ease-in-out infinite  alternate;
+
+}
+@keyframes odsoky {
+    0%{
+        transform: translateY(6px);
+    }
+
+    100%{
+        transform: translateY(1px);
+    }
+
+}
+
+/*hover ToolTip*/
+.right:hover {transform: translateX(6px); }
+
+/*right*/
+
+.right .tooltip { top:25%; left:75%; }
+
+.right .tooltip::after{
+    top:40%;
+    left:-12%;
+    transform: rotate(90deg);
+}
+
+@media screen and (max-width: 996px) {
+    .right .tooltip { top:25%; left: 25%; }
+}
+
+.search_form {
+    top: 3px;
+    right: 3px;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background-color: #44b89d;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+.form-text, span, i, mat-error {
+    color: red;
+    font-weight: bold;
+}
+
+mat-label, label {
+    font-weight: bold;
+    color: black;
+}
+
+.col {
+    display: flex;
+    align-items: stretch;
+}
+
+.image {
+    text-align: center;
+}
+
+.image img {
+    display: flex;
+    margin: 0 auto;
+    align-content: center;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}

@@ -41,8 +41,8 @@ export class BookListComponent implements OnInit {
         this.bookService.getAll(page, this.pageSize, this.id).subscribe((data?: any) => {
             this.bookList = data?.content;
             this.number = data?.number;
-            this.checkNext = !data.last;
-            this.checkPreview = !data.first;
+            this.checkNext = !data?.last;
+            this.checkPreview = !data?.first;
             this.totalElements = data?.totalElements;
             this.numberOfElementFinal = 1 + data?.size * data?.number;
             this.numberOfElementFirst = data?.numberOfElements + data?.size * data?.number;

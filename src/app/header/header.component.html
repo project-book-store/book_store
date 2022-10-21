@@ -37,11 +37,19 @@
               Bookstore
             </span>
           </a>
-          <li class="nav-item" style="padding: 8px">
-              <span class="nav-item me-2 text-success" [hidden]="!isLoggedIn">
-                <span style="color: #44b89d">{{username}}</span>
+          <li class="nav-item dropdown" style="padding: 8px" [hidden]="!isLoggedIn">
+              <span class="nav-item me-2 text-success d-flex flex-row" >
+               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;color: #44b89d">
+                {{username}} <span class="sr-only">(current)</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="customer">Xem Thông Tin</a></li>
+              </ul>
               </span>
-            <span class="nav-item me-2 text-secondary" [hidden]="isLoggedIn">Chưa Đăng Nhập</span>
+
+          </li>
+          <li class="nav-item" style="padding: 8px" [hidden]="isLoggedIn">
+            <span class="nav-item me-2 text-secondary">Chưa Đăng Nhập</span>
           </li>
         </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -50,6 +58,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" routerLink="book/manager">Quản Lí</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Danh Mục Sách <span class="sr-only">(current)</span>
@@ -70,6 +81,9 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link pl-lg-0" routerLink="promotional">Khuyến Mãi</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link pl-lg-0" routerLink="statistic">Thống Kê</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
