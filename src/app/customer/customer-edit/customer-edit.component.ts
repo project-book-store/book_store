@@ -1,18 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Book} from '../../model/book';
-import {Category} from '../../model/category';
-import {Promotion} from '../../model/promotion';
-import {BookService} from '../../service/book.service';
-import {CategoryService} from '../../service/category.service';
-import {PromotionService} from '../../service/promotion.service';
 import {ToastrService} from 'ngx-toastr';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Cart} from '../../model/cart';
+import {Router} from '@angular/router';
 import {Customer} from '../../model/customer';
 import {TokenStorageService} from '../../service/token-storage.service';
-import {CartService} from '../../service/cart.service';
-import {CheckoutService} from '../../service/checkout.service';
 import {AppUserService} from '../../service/app-user.service';
 import {CustomerService} from '../../service/customer.service';
 

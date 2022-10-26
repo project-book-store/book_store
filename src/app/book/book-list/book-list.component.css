@@ -30,7 +30,7 @@ Book stuff
 
 .cover {
   border: 2px solid gray;
-  height: 80%;
+  height: 300px;
   overflow: hidden;
 }
 
@@ -195,4 +195,18 @@ zoom on click
   font-weight: 300;
   font-family: math;
   margin-top: 10px;
+}
+
+.search_form {
+  top: 3px;
+  right: 3px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background-color: #44b89d;
+  border-radius: 100%;
+  z-index: 1;
 }

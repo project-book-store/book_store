@@ -142,14 +142,13 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-lg-12 d-grid">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Ảnh <span><i>(*)</i></span></mat-label>
-                            <input matInput type="text" formControlName="images">
-                            <!--                            <mat-error-->
-                            <!--                                    *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">-->
-                            <!--                                Vui Lòng Không Để Trống.-->
-                            <!--                            </mat-error>-->
-                        </mat-form-field>
+                        <label class="mb-2">Ảnh <span><i>(*)</i></span></label>
+                        <input type="file" class="form-control"  style="width: 100%" multiple (change)="selectFile($event)"
+                                   (change)="onFileSelected($event)"  >
+                    </div>
+                    <div style="margin-top: 20px">
+                        <img *ngIf="!editImageState" [src]="bookForm.get('images').value" width="300" height="auto" >
+                        <img class="preview-img rounded" [src]="url" *ngIf="editImageState" width="300" height="auto"  >
                     </div>
                 </div>
                 <input matInput type="date" formControlName="isDelete" hidden>

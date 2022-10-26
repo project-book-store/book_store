@@ -30,6 +30,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {StatisticModule} from './statistic/statistic.module';
 import {CustomerModule} from './customer/customer.module';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
     declarations: [
@@ -66,7 +69,9 @@ import {CustomerModule} from './customer/customer.module';
         MatPaginatorModule,
         MatCheckboxModule,
         StatisticModule,
-        CustomerModule
+        CustomerModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
     ],
     providers: [],
     exports: [

@@ -13,6 +13,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { BookSearchComponent } from './book-search/book-search.component';
+import {MatFileUploadModule} from 'angular-material-fileupload';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
     BookDetailComponent,
     BestSellingBookComponent,
     BookManagerComponent,
+    BookSearchComponent,
   ],
     imports: [
         CommonModule,
@@ -32,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatFileUploadModule
     ]
 })
 export class BookModule { }

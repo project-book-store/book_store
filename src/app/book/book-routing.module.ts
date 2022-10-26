@@ -6,6 +6,7 @@ import {BookCreateComponent} from './book-create/book-create.component';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BestSellingBookComponent} from './best-selling-book/best-selling-book.component';
 import {BookManagerComponent} from './book-manager/book-manager.component';
+import {BookSearchComponent} from './book-search/book-search.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,9 @@ const routes: Routes = [
   }, {
     path: 'book/manager',
     component: BookManagerComponent
+  }, {
+    path: 'book/search/:keySearch',
+    component: BookSearchComponent
   }
 ];
 

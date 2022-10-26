@@ -4,6 +4,7 @@ import {Book} from '../../model/book';
 import {CartService} from '../../service/cart.service';
 import {Cart} from '../../model/cart';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-book-list',
@@ -23,6 +24,7 @@ export class BookListComponent implements OnInit {
     cartList: Cart[] = [];
     total = 0;
     id: number;
+    keySearch = '';
 
     constructor(private bookService: BookService,
                 private cartService: CartService,

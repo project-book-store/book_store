@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  API_URL: `http://localhost:8080/api/public`
+  API_URL: `http://localhost:8080/api/public`,
+  firebase : {
+    apiKey: 'AIzaSyB8t97Kui38VEtP3lLSQX_8jxxS_YzlC4s',
+    authDomain: 'book-store-5d4df.firebaseapp.com',
+    projectId: 'book-store-5d4df',
+    storageBucket: 'book-store-5d4df.appspot.com',
+    messagingSenderId: '895188328847',
+    appId: '1:895188328847:web:35e6d090068c073b7e6bfa',
+    databaseURL: 'https://book-store-5d4df-default-rtdb.firebaseio.com/',
+  }
 };
 
 /*
