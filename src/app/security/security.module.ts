@@ -8,7 +8,6 @@ import { VerityResetPasswordComponent } from './verity-reset-password/verity-res
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 
-
 @NgModule({
   declarations: [
     LoginComponent,

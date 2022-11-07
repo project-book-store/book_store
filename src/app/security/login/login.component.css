@@ -3598,3 +3598,13 @@ input.input100 {
   background: #333333;
   color: #fff;
 }
+
+.drawer-container {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background: white;
+    z-index: 1;
+}

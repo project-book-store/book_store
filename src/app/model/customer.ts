@@ -6,8 +6,6 @@ export interface Customer {
     phoneNumber?: string;
     email?: string;
     note?: string;
-    city?: string;
-    district?: string;
     images?: string;
     dateOfBirth?: Date;
     address?: string;

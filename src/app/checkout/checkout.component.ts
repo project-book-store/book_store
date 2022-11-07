@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from '../model/book';
 import {Cart} from '../model/cart';
 import {CartService} from '../service/cart.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Customer} from '../model/customer';
 import {Card} from '../model/card';
 import {CheckoutService} from '../service/checkout.service';
@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import {TokenStorageService} from '../service/token-storage.service';
 import {AppUserService} from '../service/app-user.service';
 import {CustomerService} from '../service/customer.service';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
     selector: 'app-checkout',
@@ -22,24 +23,23 @@ export class CheckoutComponent implements OnInit {
     total = 0;
     customer: Customer;
     card: Card;
+    book: Book;
     customerForm: FormGroup = new FormGroup({
         id: new FormControl(''),
-        customerName: new FormControl(''),
-        phoneNumber: new FormControl(''),
+        customerName: new FormControl('', Validators.required),
+        phoneNumber: new FormControl('', Validators.required),
         email: new FormControl(''),
-        note: new FormControl(''),
-        city: new FormControl(''),
-        district: new FormControl(''),
-        address: new FormControl(''),
+        note: new FormControl('', Validators.required),
+        address: new FormControl('', Validators.required),
         images: new FormControl(''),
         dateOfBirth: new FormControl(''),
     });
     cardForm: FormGroup = new FormGroup({
-        cardName: new FormControl(''),
-        creditNumber: new FormControl(''),
-        expirationDate: new FormControl('01'),
-        expirationMonth: new FormControl(16),
-        codeCvv: new FormControl(''),
+        cardName: new FormControl('', Validators.required),
+        creditNumber: new FormControl('', Validators.required),
+        expirationDate: new FormControl('01', Validators.required),
+        expirationMonth: new FormControl(16, Validators.required),
+        codeCvv: new FormControl('', Validators.required),
         customer: new FormControl('')
     });
 
@@ -104,9 +104,11 @@ export class CheckoutComponent implements OnInit {
         this.checkoutService.updateCustomer(this.customer).subscribe(value => {
             this.checkoutService.saveCard(this.card).subscribe(data => {
                 this.checkoutService.saveBooksSold(this.cartList).subscribe(db => {
-                    window.localStorage.removeItem('cartId');
                     this.total = 0;
                     this.toastr.success('Thêm Thành Công', 'Thông Báo');
+                    for (const cart of this.cartList) {
+                        this.cartService.removeItemFromCart(cart.book);
+                    }
                 });
             });
         });

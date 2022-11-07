@@ -52,4 +52,9 @@ export class OrderComponent implements OnInit {
     this.cartService.saveBook(increase);
     this.getAllCart();
   }
+
+  removeCartList() {
+    this.cartList = [];
+    this.total = 0;
+  }
 }

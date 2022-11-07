@@ -1,8 +1,41 @@
 <div id="large-th">
     <div class="container mt-4 align-items-center">
         <h1>Thống Kê Sách Bán Và Người Mua</h1>
-        <div class="chart-container" style="padding: 20px 0">
-            <canvas id="MyChart">{{ chart }}</canvas>
+        <div class="chart-container" [hidden]="myCharCustomer" style="padding: 20px 0">
+            <canvas id="MyChart">{{ chartCustomer }}</canvas>
         </div>
+        <div class="chart-container" [hidden]="myCharBook" style="padding: 20px 0">
+            <canvas id="MyChart1">{{ chartBook }}</canvas>
+        </div>
+        <form class="col-lg-12" [formGroup]="statisticForm" (ngSubmit)="valueStatistic()">
+            <div class="mx-4 d-flex justify-content-evenly align-items-baseline">
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Top Thống Kê <span><i>(*)</i></span></mat-label>
+                            <mat-select formControlName="topStatistic">
+                                <mat-option [value]="'customer'">Top 10 khách hàng mua nhiều nhất</mat-option>
+                                <mat-option [value]="'book'">Top 10 sách bán chạy nhất</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 d-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Thời Gian <span><i>(*)</i></span></mat-label>
+                            <mat-select formControlName="time">
+                                <mat-option [value]="'day'">Ngày</mat-option>
+                                <mat-option [value]="'month'">Tháng</mat-option>
+                                <mat-option [value]="'year'">Năm</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" mat-raised-button style="background: #44b89d; color: white">
+                        Thống Kê
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

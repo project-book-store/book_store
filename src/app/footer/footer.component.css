@@ -799,6 +799,20 @@ a:focus {
   background-color: #44b89d!important;
   position: fixed;
   right: 10px;
+  top: 69%;
+  padding: 10px 15px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 50%;
+}
+
+.modal-button-message{
+  font-family: arial,helvetica,sans-serif!important;
+  color: #fff!important;
+  background-color: #44b89d!important;
+  position: fixed;
+  right: 10px;
   top: 80%;
   padding: 10px 15px;
   line-height: 30px;

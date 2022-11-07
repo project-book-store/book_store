@@ -1,40 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShareService} from '../service/share.service';
 import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  username: string;
-  idPatient: number;
-  currentUser: string;
-  role: string;
-  isLoggedIn = false;
+    username: string;
+    idPatient: number;
+    currentUser: string;
+    role: string;
+    isLoggedIn = false;
 
-  constructor(private tokenStorageService: TokenStorageService,
-              private shareService: ShareService) {
-    this.shareService.getClickEvent().subscribe(() => {
-      this.loadHeader();
-    });
-  }
-
-  ngOnInit(): void {
-    this.loadHeader();
-  }
-
-  loadHeader(): void {
-    if (this.tokenStorageService.getToken()) {
-      this.currentUser = this.tokenStorageService.getUser().username;
-      this.role = this.tokenStorageService.getUser().roles[0];
-      this.username = this.tokenStorageService.getUser().username;
+    constructor(private tokenStorageService: TokenStorageService,
+                private shareService: ShareService) {
+        this.shareService.getClickEvent().subscribe(() => {
+            this.loadHeader();
+        });
     }
-    this.isLoggedIn = this.username != null;
-  }
 
-  logOut() {
-    this.tokenStorageService.signOut();
-  }
+    ngOnInit(): void {
+        this.loadHeader();
+    }
+
+    loadHeader(): void {
+        if (this.tokenStorageService.getToken()) {
+            if (this.tokenStorageService.getUser().username !== undefined) {
+                this.currentUser = this.tokenStorageService.getUser().username;
+                this.role = this.tokenStorageService.getUser().roles[0];
+                this.username = this.tokenStorageService.getUser().username;
+            }
+            if (this.tokenStorageService.getUser().username === undefined) {
+                this.currentUser = this.tokenStorageService.getUser().name;
+                this.username = this.tokenStorageService.getUser().name;
+                this.role = 'ROLE_USER';
+            }
+        }
+        this.isLoggedIn = this.username != null;
+    }
+
+    logOut() {
+        this.tokenStorageService.signOut();
+    }
 }

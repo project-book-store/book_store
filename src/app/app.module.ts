@@ -34,6 +34,13 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+    FacebookLoginProvider
+} from 'angularx-social-login';
+import {ChatModule} from './chat/chat.module';
+import {DatePipe} from '@angular/common';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,7 +56,6 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
         BodyModule,
         SecurityModule,
         BookModule,
-        SecurityModule,
         CheckoutModule,
         HistoryModule,
         OrderModule,
@@ -72,8 +78,24 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
         CustomerModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
+        SocialLoginModule,
+        ChatModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: FacebookLoginProvider.PROVIDER_ID,
+                        provider: new FacebookLoginProvider('513261670701543')
+                    }
+                ]
+            } as SocialAuthServiceConfig,
+        },
+        DatePipe
+    ],
     exports: [
         FooterComponent
     ],

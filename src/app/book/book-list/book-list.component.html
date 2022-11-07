@@ -165,7 +165,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp Tục Mua Hàng</button>
-                <a class="btn btn-success" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal">Thanh Toán Đặt Hàng</a>
+                <button class="btn btn-success" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal" [disabled]="cartList == null || cartList.toString() == '' || cartList == []" >Thanh Toán Đặt Hàng</button>
             </div>
         </div>
     </div>

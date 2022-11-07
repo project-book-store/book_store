@@ -5,7 +5,6 @@ import {ResetPasswordComponent} from './reset-password/reset-password.component'
 import {VerityResetPasswordComponent} from './verity-reset-password/verity-reset-password.component';
 import {RegisterComponent} from './register/register.component';
 
-
 const routes: Routes = [
   {
     path: 'login',

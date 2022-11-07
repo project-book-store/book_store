@@ -82,6 +82,10 @@
                         <div class="cc-title">Họ Và Tên
                         </div>
                         <input type="text" class="input cc-txt" formControlName="customerName"/>
+                        <div class="form-text text-danger"
+                             *ngIf="customerForm.controls.customerName.hasError('required') && customerForm.controls.customerName.touched">
+                            Vui lòng nhập họ tên.
+                        </div>
                     </div>
                 </div>
                 <div class="row-cc">
@@ -89,6 +93,10 @@
                         <div class="cc-title">Số Điện Thoại
                         </div>
                         <input type="text" class="input cc-txt" formControlName="phoneNumber"/>
+                        <div class="form-text text-danger"
+                             *ngIf="customerForm.controls.phoneNumber.hasError('required') && customerForm.controls.phoneNumber.touched">
+                            Vui lòng nhập số điện thoại.
+                        </div>
                     </div>
                 </div>
                 <div class="row-cc">
@@ -96,6 +104,10 @@
                         <div class="cc-title">Ghi Chú
                         </div>
                         <textarea class="cc-txt" formControlName="note"></textarea>
+                        <div class="form-text text-danger"
+                             *ngIf="customerForm.controls.note.hasError('required') && customerForm.controls.note.touched">
+                            Vui lòng nhập ghi chú.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,23 +115,13 @@
             <div class="form-cc">
                 <div class="row-cc">
                     <div class="cc-field">
-                        <div class="cc-title">Thành Phố
-                        </div>
-                        <input type="text" class="input cc-txt" formControlName="city"/>
-                    </div>
-                </div>
-                <div class="row-cc">
-                    <div class="cc-field">
-                        <div class="cc-title">Quận Huyện
-                        </div>
-                        <input type="text" class="input cc-txt" formControlName="district"/>
-                    </div>
-                </div>
-                <div class="row-cc">
-                    <div class="cc-field">
                         <div class="cc-title">Địa Chỉ
                         </div>
                         <input type="text" class="input cc-txt" formControlName="address"/>
+                        <div class="form-text text-danger"
+                             *ngIf="customerForm.controls.address.hasError('required') && customerForm.controls.address.touched">
+                            Vui lòng nhập địa chỉ.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,9 +135,9 @@
                         </label>
                     </button>
                 </div>
-                <div class="button-container button-finish">
+                <div class="button-container button-finish" [hidden]="customerForm.invalid">
                     <button class="btn btn-none border-0" type="submit">
-                        <label for="tab3" style="background: none; padding: 0; border: none; color: #7DC855; font-size: 16px; font-weight: 500;">
+                        <label for="tab3" style="background: none; padding: 0; border: none; color: #7DC855; font-size: 16px; font-weight: 500;" >
                             Tiếp Tục
                         </label>
                     </button>

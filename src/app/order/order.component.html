@@ -48,6 +48,6 @@
     </div>
     <div class="modal-footer d-flex justify-content-around p-3">
         <button type="button" class="btn btn-secondary" routerLink="/book/list/1">Tiếp Tục Mua Hàng</button>
-        <a class="btn btn-light text-light" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal">Thanh Toán Đặt Hàng</a>
+        <button class="btn btn-light text-light" style="background-color: #44b89d" routerLink="/checkout" data-bs-dismiss="modal" [disabled]="cartList == null || cartList.toString() == '' || cartList == []" (click)="removeCartList()">Thanh Toán Đặt Hàng</button>
     </div>
 </div>

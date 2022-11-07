@@ -51,5 +51,4 @@ export class FooterComponent implements OnInit {
         this.cartService.saveBook(increase);
         this.getAllCart();
     }
-
 }
