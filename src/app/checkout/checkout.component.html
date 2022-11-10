@@ -169,81 +169,7 @@
 
                 </div>
             </div>
-            <div class="form-cc">
-                <div class="row-cc">
-                    <div class="cc-field">
-                        <div class="cc-title">Số Thẻ Tín Dụng
-                        </div>
-                        <input type="text" class="input cc-txt text-validated" formControlName="creditNumber" value="4542 9931 9292 2293" />
-                    </div>
-                </div>
-                <div class="row-cc">
-                    <div class="cc-field">
-                        <div class="cc-title">Ngày Hết Hạn
-                        </div>
-                        <select class="input cc-ddl" formControlName="expirationDate">
-                            <option selected>01</option>
-                            <option>02</option>
-                            <option>03</option>
-                            <option>04</option>
-                            <option>05</option>
-                            <option>06</option>
-                            <option>07</option>
-                            <option>08</option>
-                            <option>09</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                        </select>
-                        <select class="input cc-ddl" formControlName="expirationMonth">
-                            <option>01</option>
-                            <option>02</option>
-                            <option>03</option>
-                            <option>04</option>
-                            <option>05</option>
-                            <option>06</option>
-                            <option>07</option>
-                            <option>08</option>
-                            <option>09</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
-                            <option>13</option>
-                            <option>14</option>
-                            <option>15</option>
-                            <option selected>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                        </select>
-                    </div>
-                    <div class="cc-field">
-                        <div class="cc-title">mã CVV<span class="numberCircle">?</span>
-                        </div>
-                        <input type="text" class="input cc-txt" formControlName="codeCvv"/>
-                    </div>
-                </div>
-                <div class="row-cc">
-                    <div class="cc-field">
-                        <div class="cc-title">
-                            Tên Trên Thẻ
-                        </div>
-                        <input type="text" class="input cc-txt" formControlName="cardName"/>
-                    </div>
-                </div>
-                <input type="text" class="input cc-txt" formControlName="customer" hidden/>
+            <div class="form-cc" id="myPaypalButtons">
             </div>
             <div class="button-master-container">
                 <div class="button-container">
@@ -267,6 +193,32 @@
 
     <section id="content4" class="tab-content">
         <h3>Đang Chuyển Hàng</h3>
+        <div style="padding: 10px 20px;">
+            <table class="table table-borderless" >
+                <thead style="font-weight: 300; margin-bottom: 10px">
+                <tr>
+                    <th>STT</th>
+                    <th>Tiêu Đề</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody style="font-size: 14px">
+                <tr *ngFor="let item of cartList, index as i">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.book.nameBook}}</td>
+                    <td>{{item.book.price}}</td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="me-4" style="position: absolute">{{item.quantity}}</div>
+                        </div>
+                    </td>
+                    <td>{{item.quantity * item.book.price | currency: ' '}} đ</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="button-master-container">
             <div class="button-container">
                 <a routerLink="/book/list/1">Trở Lại</a>

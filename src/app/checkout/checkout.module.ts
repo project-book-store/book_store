@@ -5,7 +5,6 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import {CheckoutComponent} from './checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
 @NgModule({
   declarations: [
       CheckoutComponent

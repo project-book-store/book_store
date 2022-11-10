@@ -820,3 +820,17 @@ a:focus {
   font-weight: 500;
   border-radius: 50%;
 }
+
+.modal-button-games{
+  font-family: arial,helvetica,sans-serif!important;
+  color: #fff!important;
+  background-color: #44b89d!important;
+  position: fixed;
+  right: 10px;
+  top: 90%;
+  padding: 10px 15px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 50%;
+}

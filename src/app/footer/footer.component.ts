@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../service/cart.service';
 import {Book} from '../model/book';
 import {Cart} from '../model/cart';
+import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
     selector: 'app-footer',
@@ -12,7 +13,8 @@ export class FooterComponent implements OnInit {
     cartList: Cart[] = [];
     total = 0;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService,
+                private tokenStorageService: TokenStorageService) {
     }
 
     ngOnInit(): void {

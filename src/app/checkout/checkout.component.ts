@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import {TokenStorageService} from '../service/token-storage.service';
 import {AppUserService} from '../service/app-user.service';
 import {CustomerService} from '../service/customer.service';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 @Component({
     selector: 'app-checkout',
@@ -49,6 +49,16 @@ export class CheckoutComponent implements OnInit {
                 private toastr: ToastrService,
                 private appUserService: AppUserService,
                 private customerService: CustomerService) {
+        render(
+            {
+                id: '#myPaypalButtons',
+                currency: 'USD',
+                value: '5000000.00',
+                onApprove: (details => {
+                    alert('Thanh toán thành công');
+                })
+            }
+        );
     }
 
     ngOnInit(): void {
@@ -105,7 +115,7 @@ export class CheckoutComponent implements OnInit {
             this.checkoutService.saveCard(this.card).subscribe(data => {
                 this.checkoutService.saveBooksSold(this.cartList).subscribe(db => {
                     this.total = 0;
-                    this.toastr.success('Thêm Thành Công', 'Thông Báo');
+                    this.toastr.success('Đang chuyển hàng', 'Thông Báo');
                     for (const cart of this.cartList) {
                         this.cartService.removeItemFromCart(cart.book);
                     }

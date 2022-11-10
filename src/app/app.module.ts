@@ -40,6 +40,7 @@ import {
 } from 'angularx-social-login';
 import {ChatModule} from './chat/chat.module';
 import {DatePipe} from '@angular/common';
+import {GamesModule} from './games/games.module';
 
 @NgModule({
     declarations: [
@@ -79,7 +80,8 @@ import {DatePipe} from '@angular/common';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         SocialLoginModule,
-        ChatModule
+        ChatModule,
+        GamesModule
     ],
     providers: [
         {
